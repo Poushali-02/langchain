@@ -1,0 +1,35 @@
+python .\main.py
+
+✅ Documents loaded
+✅ Documents cleaned
+✅ Documents splitted
+✅ Success! Embedded 32 chunks.
+✅ Vectors generated
+✅ Chain created
+**Module 1: Introduction to Computer Networks**
+
+In this module, we will be discussing the fundamental concepts of computer networks. One of the key topics covered in this module is network topology, which refers to the physical or logical arrangement of devices in a network.
+
+Now, let's dive into the specific topic of bus topology.
+
+**Bus Topology:**
+
+In a bus topology, all devices in the network are connected to a single cable or backbone, known as the bus. This bus cable acts as a common medium for communication between devices. Each device on the network is connected to a single point on the bus, and data is transmitted to all devices on the network through the bus.
+
+Here are some key characteristics of bus topology:
+
+* **Single cable:** A bus topology uses a single cable to connect all devices in the network.
+* **Common medium:** The bus cable acts as a common medium for communication between devices.
+* **Central point:** Data is transmitted to all devices on the network through the central bus cable.
+* **Easy installation:** Bus topology is relatively easy to install and set up.
+* **Less expensive:** Bus topology is often less expensive than other network topologies.
+
+However, bus topology also has some limitations:
+
+* **Difficult to troubleshoot:** If a problem occurs on the bus cable, it can be difficult to isolate and troubleshoot the issue.
+* **Limited scalability:** Bus topology can become impractical as the network grows, as the bus cable can become too long or complex.
+* **Half-duplex operation:** Bus topology operates in half-duplex mode, meaning that data can only travel in one direction at a time.
+
+Overall, bus topology is a simple and cost-effective network topology that is suitable for small networks or applications where data is transmitted in a simple, one-way fashion.
+
+Now, if you have any specific questions or queries related to bus topology, feel free to ask!
