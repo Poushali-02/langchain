@@ -1,4 +1,6 @@
 .env
 Computer networks/
 CN_db/
+CN_DB_2/
 docs/
+__pycache__/

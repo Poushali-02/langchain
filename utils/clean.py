@@ -2,32 +2,46 @@
 import re
 import json
 import os
+from langchain_core.documents import Document
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-json_path = os.path.join(base_dir, "docs", "mod1splitted_2.json")
-
-def clean_text(text):
-    text = re.sub(r'\s+', ' ', text)
-    return text.strip()
-
-with open(json_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
+class Cleaner():
     
-final_doc = []
-for entry in data:
-    for i, doc in entry.items():
-        doc = clean_text(doc)
-        final_doc.append(doc)
-
-json_output_path = os.path.join(base_dir, "docs", "mod1_cleaned_docs_2.json")
-
-serialized_data = [
-    {
-        f"chunk {i}": text for i,text in enumerate(final_doc)
-    }
-]
-
-with open(json_output_path, "w", encoding="utf-8") as f:
-    json.dump(serialized_data, f, ensure_ascii=False, indent=4)
+    def __init__(self):
+        pass
     
-print(f"Successfully saved all documents to: {json_output_path}")
+    def clean_text(self, text):
+        text = re.sub(r'\s+', ' ', text)
+        return text.strip()
+    
+    # document object -> str -> cleaned str
+    def cleaned_document(self,document):
+        content = "\n".join(doc.page_content for doc in document)
+        cleaned_content = self.clean_text(content)
+        return cleaned_content
+    
+    # after splitting
+    def post_split(self,data):
+        final_doc = []
+        for entry in data:
+            for i, doc in entry.items():
+                doc = self.clean_text(doc)
+                final_doc.append(doc)
+        serialized_data = [
+            {
+                f"chunk {i}": text for i,text in enumerate(final_doc)
+            }
+        ]
+        return serialized_data
+    
+    # before splitting
+    def prepare_split(
+        self,
+        docs
+    ):
+        """Function to prepare a document for text splitter: returns a str to split"""  
+        data = [
+                Document(page_content=item["page_content"], metadata=item["metadata"])
+                for item in docs
+        ]
+        full_content = "\n\n".join([doc.page_content for doc in data])
+        return full_content
